@@ -5,8 +5,8 @@
 Measures how often a tool-using LLM agent falls for an attacker
 instruction hidden in a tool's *description* versus hidden in a tool's
 *output* (indirect prompt injection), and how much a lightweight regex
-guard reduces it. Runs entirely against a local open-source model
-through Ollama, so it needs no API key and costs nothing to run.
+guard reduces it. Runs against a local open-source model through
+Ollama, so it needs no API key and costs nothing to run.
 
 ## Why
 
@@ -15,7 +15,7 @@ works once. This benchmark scores eight scenarios automatically
 instead: control, description-injection, and output-injection, each
 with an explicit, a social-engineering, and an obfuscated variant, run
 three trials at a time with the guard on and off. It turns "the guard
-works" into a number you can rerun, check, and dispute.
+works" into a number you can rerun and check.
 
 ## Results
 
@@ -35,6 +35,17 @@ Only the explicit "ignore previous instructions" override in a tool
 in a tool's *output*, and every social-engineering or obfuscated
 variant, failed against this model regardless of the guard. Full
 writeup with methodology and limitations: [`results/report.md`](results/report.md).
+
+## See it happen
+
+Two standalone, narrated scripts in [`demo/`](demo/) show the same
+mechanic with no statistics attached: a code-execution tool and a
+webpage-fetch tool, both clean, both handing back a poisoned result.
+
+```sh
+python demo/run_code_demo.py
+python demo/fetch_webpage_demo.py
+```
 
 ## How it works
 
