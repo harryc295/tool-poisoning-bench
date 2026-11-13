@@ -2,11 +2,13 @@
 
 [![test](https://github.com/harryc295/tool-poisoning-bench/actions/workflows/test.yml/badge.svg)](https://github.com/harryc295/tool-poisoning-bench/actions/workflows/test.yml)
 
-Measures how often a tool-using LLM agent falls for an attacker
-instruction hidden in a tool's *description* versus hidden in a tool's
-*output* (indirect prompt injection), and how much a lightweight regex
-guard reduces it. Runs against a local open-source model through
-Ollama, so it needs no API key and costs nothing to run.
+A benchmark for tool-poisoning attacks against LLM agents. It hides an
+attacker instruction in either a tool's *description* or a tool's *output*
+(indirect prompt injection), in explicit, social-engineering and obfuscated
+variants. Against `qwen2.5:7b`, description injection succeeded in 33% of
+trials with no guard and 0% with a lightweight regex guard. Output injection
+succeeded in 0% of trials either way. It runs locally through Ollama, so you
+need no API key.
 
 ## Why
 
